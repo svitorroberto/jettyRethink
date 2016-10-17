@@ -1,0 +1,83 @@
+<html xmlns:ui="http://java.sun.com/jsf/facelets"                
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui">
+  
+    <h:head>
+  	<title>Cadastrar Funcionario</title>
+  
+   <link rel="icon" type="image/png" href="images/favicon2.png"/>
+	<link rel="StyleSheet" type="text/css" href="css/style.css" media="screen" />
+  </h:head>
+  
+  <h:body>
+    <div id="tarefas">
+        <p:fieldset legend="Cadastrar Departamentos">
+            <br/>
+            <p:tabView id="tbv1" dynamic="true" cache="true">
+                <p:tab title="Cargo">
+                    <h:form prependId="false" id="formCidade">
+                        <p:growl id="msg0"/>
+                        <p:messages autoUpdate="true"/>
+                        <h:panelGrid columns="2" cellpadding="10" styleClass="panelGrid" id="grid0">
+                            
+                            <h:outputLabel/>
+                            <h:inputHidden id="idcidade" value="#{funcionarioMB.f.func_cod}"/> 
+                            
+                            <h:outputLabel for="nomecargo" value="Nome.:"/>
+                            <p:inputText id="nomecargo" size="40" value="#{funcionarioMB.f.func_nome}"
+                                onkeyup="this.value = this.value.toUpperCase()" required="true"
+                                requiredMessage="O campo [Nome] é obrigatório."/>
+                            
+                            <h:outputLabel for="nivelcargo" value="CPF:"/>
+                            <p:inputMask value="#{funcionarioMB.f.func_cpf}" mask="999.999.999-99"
+                            	required="true" requiredMessage="O campo [CPF] é obrigatório."/>
+                            
+                            <h:outputLabel for="nivelcargo1" value="Data de Nascimento:"/>
+                            <p:calendar id="nivelcargo1" value="#{funcionarioMB.f.func_dt_nascimento}" pattern="dd-MM-yyyy"
+                             required="true" requiredMessage="O campo [Nível] é obrigatório."/>
+                            
+                            <h:outputLabel for="nivelcargo2" value="Departamento:"/>
+                            <p:inputText id="nivelcargo2" size="40" value="#{funcionarioMB.f.func_dpto}"
+                                onkeyup="this.value = this.value.toUpperCase()" required="true"
+                                requiredMessage="O campo [Nível] é obrigatório."/>
+                                
+                            <h:outputLabel for="nivelcargo3" value="Data de Contratação:"/>
+                            <p:calendar id="nivelcargo3" value="#{funcionarioMB.f.func_dt_contratacao}" pattern="dd-MM-yyyy"
+                            required="true" requiredMessage="O campo [Nível] é obrigatório."/>
+                            
+                            <h:outputLabel for="nivelcargo4" value="Salario:"/>
+                            
+                            <p:inputNumber symbol="R$ " symbolPosition="p" value="#{funcionarioMB.f.func_salario}" 
+                            	decimalSeparator="," thousandSeparator="." required="true" 
+                            	requiredMessage="O campo [Salario] é obrigatório."/>
+                            	
+                            	
+                            
+                            
+                            
+                            <h:outputLabel for="nivelcargo5" value="Cargo:"/>
+                            <p:inputText id="nivelcargo5" size="40" value="#{funcionarioMB.f.func_cargo}"
+                                onkeyup="this.value = this.value.toUpperCase()" required="true"
+                                requiredMessage="O campo [Nível] é obrigatório."/>
+                            <p:panel>
+                            
+                                <p:commandButton value="Salvar" action="#{funcionarioMB.cadastraFuncionarioMB}"
+                                    image="ui-icon ui-icon-disk" />
+                                <p:commandButton value="Cancelar" actionListener="#{funcionarioMB.limpCidade}" 
+                                    image="ui-icon ui-icon-close" update="@form"/>
+                            </p:panel>
+                        </h:panelGrid>
+                    </h:form>
+                </p:tab>
+            </p:tabView>
+            
+
+            
+        </p:fieldset>
+    </div>
+
+</h:body>
+</html>

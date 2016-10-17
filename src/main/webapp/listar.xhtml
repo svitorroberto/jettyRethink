@@ -1,0 +1,72 @@
+<html xmlns:ui="http://java.sun.com/jsf/facelets"                
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui">
+  
+    <h:head>
+  	<title>Cadastrar Departamento</title>
+  
+   <link rel="icon" type="image/png" href="images/favicon2.png"/>
+	<link rel="StyleSheet" type="text/css" href="css/style.css" media="screen" />
+  </h:head>
+  
+  <h:body>
+    <div id="tarefas">
+        <p:fieldset legend="Listar">
+            <br/>
+            <p:tabView id="tbv1" dynamic="true" cache="true">
+                <p:tab title="Cargo">
+                    <h:form id="formtable">
+                <p:growl id="msg1"/>
+                <p:dataTable id="idTabela" var="car" value="#{cargoMB.cargos}"
+                             paginator="true" rows="10" emptyMessage="Nenhum registro encontrado"
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink}
+                             {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="5,10,15">
+                
+                    <f:facet name="header">Lista de Cargos</f:facet>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nome"/>
+                        </f:facet>
+                        <h:outputText value="#{car.cargo_descricao}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nível"/>
+                        </f:facet>
+                        <h:outputText value="#{car.cargo_nivel}"/>
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Ações"/>
+                        </f:facet>
+                        <p:commandButton value="Editar" image="ui-icon ui-icon-pencil"
+                                process="@this" update=":tbv1:formCidade">
+                            <f:setPropertyActionListener target="#{cargoMB.c}"
+                                value="#{c}"/>
+                        </p:commandButton>
+                        <p:commandButton value="Remover" action="#{cargoMB.deletaCargos}"
+                                image="ui-icon ui-icon-close" update="@form">
+                            <f:setPropertyActionListener target="#{cargoMB.c}"
+                                value="#{c}"/>
+                        </p:commandButton>
+                        
+                    </p:column>
+                    
+                </p:dataTable>
+                
+            </h:form>
+                </p:tab>
+            </p:tabView>
+            
+
+            
+        </p:fieldset>
+    </div>
+
+</h:body>
+</html>

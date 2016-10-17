@@ -1,0 +1,57 @@
+<html xmlns:ui="http://java.sun.com/jsf/facelets"                
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui">
+  
+    <h:head>
+  	<title>Cadastrar Cargo</title>
+  
+   <link rel="icon" type="image/png" href="images/favicon2.png"/>
+	<link rel="StyleSheet" type="text/css" href="css/style.css" media="screen" />
+  </h:head>
+  
+  <h:body>
+    <div id="tarefas">
+        <p:fieldset legend="Cadastrar Cargos">
+            <br/>
+            <p:tabView id="tbv1" dynamic="true" cache="true">
+                <p:tab title="Cargo">
+                    <h:form prependId="false" id="formCidade">
+                        <p:growl id="msg0"/>
+                        <p:messages autoUpdate="true"/>
+                        <h:panelGrid columns="2" cellpadding="10" styleClass="panelGrid" id="grid0">
+                            
+                            <h:outputLabel/>
+                            <h:inputHidden id="idcidade" value="#{cargoMB.c.cargo_cod}"/> 
+                            
+                            <h:outputLabel for="nomecargo" value="Nome.:"/>
+                            <p:inputText id="nomecargo" size="40" value="#{cargoMB.c.cargo_descricao}"
+                                onkeyup="this.value = this.value.toUpperCase()" required="true"
+                                requiredMessage="O campo [Nome] é obrigatório."/>
+                            
+                            <h:outputLabel for="nivelcargo" value="Nível:"/>
+                            <p:inputText id="nivelcargo" size="40" value="#{cargoMB.c.cargo_nivel}"
+                                onkeyup="this.value = this.value.toUpperCase()" required="true"
+                                requiredMessage="O campo [Nível] é obrigatório."/>
+                            
+                            <p:panel>
+                                <p:commandButton value="Salvar" action="#{cargoMB.CadastraCargoMB}"
+                                    image="ui-icon ui-icon-disk" />
+                                <p:commandButton value="Cancelar" actionListener="#{cargoMB.limpCidade}" 
+                                    image="ui-icon ui-icon-close" update="@form"/>
+                            </p:panel>
+                        </h:panelGrid>
+                    </h:form>
+                </p:tab>
+            </p:tabView>
+            
+
+	            
+            
+        </p:fieldset>
+    </div>
+
+</h:body>
+</html>
